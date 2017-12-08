@@ -1,7 +1,9 @@
-package net.bergertom.rcpdemo.gui;
+package net.bergertom.rcpdemo.gui.perspective;
 
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
+
+import net.bergertom.rcpdemo.gui.view.EmptyView;
 
 public class EmptyPerspective implements IPerspectiveFactory {
 

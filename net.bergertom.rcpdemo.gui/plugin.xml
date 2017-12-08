@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <!-- extension
+   <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="net.bergertom.rcpdemo.gui.handler.dataset.DatasetOpenHandler"
-            id="net.bergertom.rcpdemo.gui.command.dataset.open"
+            defaultHandler="net.bergertom.rcpdemo.gui.handler.FileOpen"
+            id="net.bergertom.rcpdemo.gui.command.file.open"
             name="dataset.open">
       </command>
-   </extension -->
+   </extension>
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
                id="net.bergertom.rcpdemo.gui.menu.dataset"
-               label="dataset"
+               label="File"
                mnemonic="D">
             <command
-                  commandId="net.bergertom.rcpdemo.gui.command.dataset.open"
+                  commandId="net.bergertom.rcpdemo.gui.command.file.open"
                   label="Open"
                   tooltip="tooltip open">
             </command>
