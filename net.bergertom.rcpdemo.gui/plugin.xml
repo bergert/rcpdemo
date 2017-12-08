@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <!-- extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="net.bergertom.rcpdemo.gui.handler.dataset.DatasetOpenHandler"
+            id="net.bergertom.rcpdemo.gui.command.dataset.open"
+            name="dataset.open">
+      </command>
+   </extension -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="net.bergertom.rcpdemo.gui.menu.dataset"
+               label="dataset"
+               mnemonic="D">
+            <command
+                  commandId="net.bergertom.rcpdemo.gui.command.dataset.open"
+                  label="Open"
+                  tooltip="tooltip open">
+            </command>
+            <separator
+                  name="net.bergertom.rcpdemo.gui.separator1"
+                  visible="true">
+            </separator>
+         </menu>
+         <menu
+               id="net.bergertom.rcpdemo.gui.menu.edit"
+               label="Edit"
+               mnemonic="E">
+            <command
+                  commandId="net.bergertom.rcpdemo.gui.command.edit.csv.copy.details"
+                  id="edit.csv.copy.details"
+                  label="Copy"
+                  style="push"
+                  tooltip="tooltip copy">
+            </command>
+            <separator
+                  name="net.bergertom.rcpdemo.gui.separator3"
+                  visible="true">
+            </separator>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="net.bergertom.rcpdemo.gui.toolbar">
+            <command
+                  commandId="net.bergertom.rcpdemo.gui.command.dataset.open"
+                  label="Dataset Open"
+                  style="push"
+                  tooltip="tooltip Dataset Open">
+            </command>
+            <separator
+                  name="net.bergertom.rcpdemo.gui.separator1"
+                  visible="true">
+            </separator>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="net.bergertom.rcpdemo.gui.EmptyPerspective"
+            id="net.bergertom.rcpdemo.gui.perspective.empty"
+            name="Empty perspective">
+      </perspective>
+   </extension>
+  
+   <extension
+         id="RCPdemo"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bergertom.rcpdemo.gui.application"
+            name="RCPdemo">
+         <property
+               name="aboutText"
+               value="RCPdemo&#x0A;Version 1.0.0">
+         </property>
+         <property
+               name="appName"
+               value="RCPdemo">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="net.bergertom.rcpdemo.gui.views.EmptyView"
+            id="net.bergertom.rcpdemo.gui.display.views.emptyview"
+            name="some label"
+            restorable="false">
+      </view>
+   </extension>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            visible="true">
+         <run
+               class="net.bergertom.rcpdemo.gui.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="FishStatJ "
+            id="net.bergertom.rcpdemo.gui.context"
+            name="Default context"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
+   <extension
+         id="net.bergertom.rcpdemo.gui.application"
+         name="RCP demo application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+      </application>
+   </extension>
+   <extension
+         id="RCPdemo"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.bergertom.rcpdemo.gui.application"
+            name="RCPdemo">
+         <property
+               name="windowImages"
+               value="icons/fishstatj/fishstat-icon-16.png,icons/fishstatj/fishstat-icon-32.png,icons/fishstatj/fishstat-icon-48.png,icons/fishstatj/fishstat-icon64-32.png,icons/fishstatj/fishstat-icon128-32.png">
+         </property>
+         <property
+               name="aboutText"
+               value="FishStatJ, a tool for fishery statistics analysis&#x0D;&#x0A;Release: 3.03.3&#x0D;&#x0A;by Thomas Berger, Fabrizio Sibeni and Francesco Calderini&#x0D;&#x0A;&#x0D;&#x0A;This product includes software developed and distributed under the EPL, LGPL and Apache&#x0D;&#x0A; licenses.&#x0D;&#x0A;&#x0D;&#x0A;Please also refer to the Dataset Notes (Menu | View | Show Metadata |Attachments)”&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;Questions and feedback should be addressed to:&#x0D;&#x0A;FAO&#x0D;&#x0A;Fishery and Aquaculture Department&#x0D;&#x0A;Statistics and Information Branch&#x0D;&#x0A;Email: Fish-Statistics-Inquiries@fao.org&#x0D;&#x0A;&#x0D;&#x0A;Visit http://www.fao.org/fishery/statistics/software/fishstatj/en">
+         </property>
+         <property
+               name="aboutImage"
+               value="res/About.png">
+         </property>
+         <property
+               name="appName"
+               value="FishStatJ">
+         </property>
+      </product>
+   </extension>
+</plugin>
