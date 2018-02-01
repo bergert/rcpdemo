@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FormAttachment;
@@ -58,9 +59,15 @@ public class DelayPage1 extends WizardPage {
 		lblFileName.setLayoutData(fd_lblFileName);
 		
 		setControl(container);
-		setPageComplete(false);
+		//setPageComplete(false);
 		System.out.println("setPageComplete(false);");
 	}
+
+	@Override
+    public IWizardPage getPreviousPage() {
+		// the back button is disabled
+		return null;
+    }
 
 	@Override
 	public void setVisible(boolean visible) {
@@ -81,16 +88,16 @@ public class DelayPage1 extends WizardPage {
 	 */
 	private void doHTTPdownload() {
 		try {
-			getContainer().run(true, false, new IRunnableWithProgress()  {
+			getContainer().run(false, false, new IRunnableWithProgress()  {
 				@Override
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 					monitor.beginTask("Downloading workspace", 5);
-					for (int i=0; i< 5; i++) {
+					for (int i=0; i< 15; i++) {
 						System.out.println(" counting ... "+i);
 						monitor.worked(1);
 						try {
-							TimeUnit.MILLISECONDS.sleep(500);
+							TimeUnit.MILLISECONDS.sleep(1500);
 						} catch (Exception e2) { };
 					}
 					monitor.done();
@@ -110,16 +117,17 @@ public class DelayPage1 extends WizardPage {
 	
 	private void downloadCompleted() {
 
-		lblFileName.setText("path-to-file.txt");
+		lblFileName.setText("downloaded from http://www.fao.org");
 		lblFileName.redraw();
-		
-		this.setMessage("The download is complete", INFORMATION );
 
-		this.setPageComplete(true);
-		
+		setPageComplete(true);
+		setMessage("The download is complete", INFORMATION );
+
 		System.out.println("wizard.canFinish()="+wizard.canFinish());
 		System.out.println("isPageComplete()="+this.isPageComplete());
-        this.getContainer().updateButtons();
+        getContainer().updateButtons();
+		container.update();
+		container.redraw();
         
 	}
 }

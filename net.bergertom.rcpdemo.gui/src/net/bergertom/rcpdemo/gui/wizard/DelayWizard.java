@@ -13,7 +13,7 @@ public class DelayWizard extends Wizard {
 	@Override
 	public void addPages() {
 
-		addPage(new DelayPage0(this));
+		//addPage(new DelayPage0(this));
 		addPage(new DelayPage1(this));
 	}
 
